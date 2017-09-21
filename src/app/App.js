@@ -1,20 +1,22 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.min.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import routes from './routes/Routes';
+import {BrowserRouter, Route} from 'react-router-dom';
+import {RootComponent} from './component/MyLayout';
+import {LoginComponent} from './component/Login'
+import {RegisterComponent} from './component/Register'
 
 class App extends Component {
   render() {
     return (
-        <Router>
-          <Route>
-            {
-              routes.map((route) => {
-                return <Route {...route} key={route.id}/>
-              })
-            }
-          </Route>
-        </Router>
+        <BrowserRouter>
+          <div>
+            <Route path='/' exact component={RootComponent}>
+
+            </Route>
+            <Route path='/login' component={LoginComponent}/>
+            <Route path='/register' component={RegisterComponent}/>
+          </div>
+        </BrowserRouter>
     );
   }
 }
