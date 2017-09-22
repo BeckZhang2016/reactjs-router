@@ -5,13 +5,13 @@ import {BodyComponent} from './layout/Body'
 import {ButtomComponent} from './layout/Bottom'
 
 
-export class RootComponent extends Component {
+export default class RootComponent extends Component {
   render() {
     return (
         <div>
           <HeaderComponent/>
           <SideBarComponent/>
-          <BodyComponent/>
+          <BodyComponent {...this.props}/>
           <ButtomComponent/>
         </div>
     );

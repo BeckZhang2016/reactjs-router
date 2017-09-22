@@ -1,22 +1,31 @@
 import React, {Component} from 'react';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import 'antd/dist/antd.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {RootComponent} from './component/MyLayout';
-import {LoginComponent} from './component/Login'
-import {RegisterComponent} from './component/Register'
+import Routes from './routes/Routes';
+import Redx from './test/redux/App'
+import todoApp from './test/redux/reducers'
+
+let store = createStore(todoApp);
 
 class App extends Component {
   render() {
     return (
-        <BrowserRouter>
-          <div>
-            <Route path='/' exact component={RootComponent}>
-
-            </Route>
-            <Route path='/login' component={LoginComponent}/>
-            <Route path='/register' component={RegisterComponent}/>
-          </div>
-        </BrowserRouter>
+        <div>
+          {/*<BrowserRouter>
+            <div>
+              {
+                Routes.map((route, index) => (
+                    <Route key={index} exact={route.exact} path={route.path} render={props => (
+                        <route.component {...props} routes={route.routes}/>
+                    )}/>
+                ))
+              }
+            </div>
+          </BrowserRouter>*/}
+          <Provider store={store}><Redx/></Provider>
+        </div>
     );
   }
 }
