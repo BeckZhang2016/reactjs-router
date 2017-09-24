@@ -24,6 +24,7 @@ class App extends Component {
               }
             </div>
           </BrowserRouter>*/}
+          {/*<Provider store={store}><Redx/></Provider>*/}
           <Provider store={store}><Redx/></Provider>
         </div>
     );
