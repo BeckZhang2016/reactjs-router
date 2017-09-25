@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom'
+import {Route, Switch, Link} from 'react-router-dom'
 
-export class BodyComponent extends Component{
-  render(){
+export class BodyComponent extends Component {
+  render() {
+    const {routes} = this.props;
     return (
         <div>
           BodyComponent
-          {this.props.routes.map((childRoute, index)=>(
+          <Link to="/main/api">show body one</Link>
+          {routes.map((childRoute, index) => (
               <RouteWithSubRoutes key={index} {...childRoute}/>
           ))}
         </div>
@@ -16,7 +18,6 @@ export class BodyComponent extends Component{
 
 const RouteWithSubRoutes = (route) => (
     <Route exact={route.exact} path={route.path} render={props => (
-        // pass the sub-routes down to keep nesting
         <route.component {...props} routes={route.routes}/>
     )}/>
 );
