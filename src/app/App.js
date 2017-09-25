@@ -4,8 +4,9 @@ import {Provider} from 'react-redux';
 import 'antd/dist/antd.min.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Routes from './routes/Routes';
-import Redx from './test/redux/App'
-import todoApp from './test/redux/reducers'
+import Redx from './test/redux/App';
+import Root from './test/advancedRedux/Root';
+import todoApp from './test/redux/reducers';
 
 let store = createStore(todoApp);
 
@@ -25,7 +26,7 @@ class App extends Component {
             </div>
           </BrowserRouter>*/}
           {/*<Provider store={store}><Redx/></Provider>*/}
-          <Provider store={store}><Redx/></Provider>
+          <Root/>
         </div>
     );
   }

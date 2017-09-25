@@ -1,9 +1,9 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'axios'
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
-export const INVALIDATE_SUBREDDIT  = 'INVALIDATE_SUBREDDIT '
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
+export const INVALIDATE_SUBREDDIT  = 'INVALIDATE_SUBREDDIT ';
 
 export function selectSubreddit(subreddit) {
   return {
@@ -37,15 +37,14 @@ function receivePosts(subreddit, json) {
 
 function fetchPosts(subreddit) {
   return dispatch => {
-    dispatch(requestPosts(subreddit))
+    dispatch(requestPosts(subreddit));
     return fetch(`http://www.reddit.com/r/${subreddit}.json`)
-        .then(response => response.json())
-        .then(json => dispatch(receivePosts(subreddit, json)))
+        .then(response => dispatch(receivePosts(subreddit, response.data)))
   }
 }
 
 function shouldFetchPosts(state, subreddit) {
-  const posts = state.postsBySubreddit[subreddit]
+  const posts = state.postsBySubreddit[subreddit];
   if (!posts) {
     return true
   } else if (posts.isFetching) {
