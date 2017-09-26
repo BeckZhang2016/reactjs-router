@@ -15,11 +15,11 @@ export default [
     component: RegisterComponent
   },
   {
-    path: "/main",
+    path: "/",
     component: RootComponent,
     routes:[
       {
-        path: "/main/api",
+        path: "/api",
         component: BodyOneComponent
       }
     ]
