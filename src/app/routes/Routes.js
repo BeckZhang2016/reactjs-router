@@ -6,7 +6,6 @@ import BodyOneComponent from '../component/bodyComponent/BodyOneComponent';
 
 export default [
   {
-    exact: true,
     path: '/login',
     component: LoginComponent
   },
@@ -15,11 +14,12 @@ export default [
     component: RegisterComponent
   },
   {
+    exact: true,
     path: "/",
     component: RootComponent,
     routes:[
       {
-        path: "/api",
+        path: "/",
         component: BodyOneComponent
       }
     ]
